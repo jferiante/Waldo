@@ -1,5 +1,4 @@
-
-# Waldo (Current Version: 0.4)
+## Waldo (Current Version: 0.4)
 
 Waldo is a port of TextMate's Find-in-Project feature, designed to work with [MacVim.app](https://github.com/b4winckler/macvim)
 
@@ -7,13 +6,33 @@ Waldo is a port of TextMate's Find-in-Project feature, designed to work with [Ma
 
 ### [Screencast Demo](https://github.com/jtaby/Waldo/raw/master/resources/waldo_demo.mov)
 
+The original developer of this plugin has been inactive for a few years. Here's what I had to do to get this working (in addition to his original instructions below). Note: my latest update makes this plugin compatible with pathogen (but you must still install the Waldo app first as explained below).
+
+**1-Install Xcode**<br>
+First, to build this, you'll be forced to use XCode 5.0.1 or older. (5.1 disallows garbage collection & this app uses it, so you can't use Xcode 5.1.X). <br>
+If you have the latest version of Xcode like me, you'll need instructions like this on how to install multiple versions of Xcode at once: http://iosdevelopertips.com/xcode/download-and-install-older-versions-of-xcode-xcode-previous-releases.html<br>
+Here's where apple has old versions of Xcode:<br>
+https://developer.apple.com/downloads/index.action
+
+**2-Build the project (open Waldo.xcodeproj in Xcode and hit the "play" button)**<br>
+Most likely the app will be here: `~/Library/Developer/Xcode/DerivedData/Waldo-<hash>`<br>
+My compiled `Waldo.app` was in this directory: `~/Library/Developer/Xcode/DerivedData/Waldo-<hash>/Build/Products/Debug`
+
+**3-If you get the "macruby.h file not found" error**<br>
+add `/Library/Frameworks` to “Framework Search Paths" in the project settings<br>
+Add a symbolic link to help Xcode find the MacRuby.framework
+`cd /Applications/Xcode.app/Contents/Developer/Library/Frameworks`
+`sudo ln -s /Library/Frameworks/MacRuby.framework MacRuby.framework`
+
+Once you have a Waldo.app to install you can continue with the instructions below.
+
 ## Usage
 
 - Download Waldo.zip and put the .app in your Applications folder
 - Launch Waldo.app to install the Vim plugin
 - Open MacVim.app and trigger Waldo using the `<leader>f` mapping.
   
-  **NOTE**: `<leader>` is a programmable prefix for commands. By default, it's '\' (backslash), though you can change it in your .vimrc file.
+**NOTE**: `<leader>` is a programmable prefix for commands. By default, it's '\' (backslash), though you can change it in your .vimrc file.
 	
 *NOTE:* If you do not have your `.vim/` folder in your home directory, you must manually place Waldo.vim (found inside the .app package) in your `.vim/plugins` directory.
 	
